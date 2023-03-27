@@ -145,6 +145,23 @@ bool isCircularList(Node *head)
     return false;
 }
 
+Node *reverse(Node *&head)
+{
+    if (head == NULL || head->next == NULL)
+    {
+        return head;
+    }
+
+    Node *chotiHead = reverse(head->next);
+
+    head->next->next = head;
+    int data = head->next->next->data;
+    head->next = NULL;
+    // data = head->next->data;
+
+    return chotiHead;
+}
+
 int main(int argc, char const *argv[])
 {
     // create a new node
@@ -158,32 +175,36 @@ int main(int argc, char const *argv[])
 
     insertAtTail(tail, 12);
 
-    print(head);
+    // print(head);
 
     insertAtTail(tail, 15);
 
-    print(head);
+    // print(head);
     insertAtPosition(4, 22, head, tail);
 
-    print(head);
+    // print(head);
 
-    cout << "head " << head->data << endl;
-    cout << "tail " << tail->data << endl;
+    Node *temp = reverse(head);
 
-    deleteNode(3, head);
-    print(head);
+    print(temp);
 
-    cout << "head " << head->data << endl;
-    cout << "tail " << tail->data << endl;
+    // cout << "head " << head->data << endl;
+    // cout << "tail " << tail->data << endl;
 
-    if (isCircularList(head))
-    {
-        cout << "linked list is circular in nature " << endl;
-    }
-    else
-    {
-        cout << "linked list is not circular" << endl;
-    }
+    // deleteNode(3, head);
+    // print(head);
+
+    // cout << "head " << head->data << endl;
+    // cout << "tail " << tail->data << endl;
+
+    // if (isCircularList(head))
+    // {
+    //     cout << "linked list is circular in nature " << endl;
+    // }
+    // else
+    // {
+    //     cout << "linked list is not circular" << endl;
+    // }
 
     return 0;
 }

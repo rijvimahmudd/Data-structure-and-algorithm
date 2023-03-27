@@ -113,7 +113,29 @@ int main()
     else
     {
         cout << "Stack is not empty" << endl;
-        cout << "Stack is not empty" << endl;
     }
+
+    string str = "mahmudd";
+    stack<char> s;
+
+    for (int i = 0; i < str.length(); i++)
+    {
+        char ch = str[i];
+        s.push(ch);
+    }
+
+    string ans = "";
+
+    while (!s.empty())
+    {
+        char ch = s.top();
+        ans.push_back(ch);
+
+        s.pop();
+    }
+
+    cout << "\"" << str << "'s\" "
+         << "reversed form is " << ans << endl;
+
     return 0;
 }
